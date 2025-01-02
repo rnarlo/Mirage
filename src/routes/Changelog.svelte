@@ -40,3 +40,33 @@
 		>.
 	</p>
 </div>
+
+<style>
+	.changelog {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+	}
+
+	.date {
+		width: 100%;
+	}
+
+	ul {
+		display: flex;
+		text-align: left;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		width: 90%;
+	}
+
+	li {
+		width: 100%;
+		margin: 0;
+		text-indent: 0;
+	}
+</style>

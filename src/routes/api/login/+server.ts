@@ -1,5 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import { CLIENT_ID, REDIRECT_URI } from '$env/static/private';
+// Declare a CLIENT_ID and REDIRECT_URI in a .env file. CLIENT_ID comes from Spotify.
 
 const stateKey = 'spotify_auth_state';
 

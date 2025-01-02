@@ -1,5 +1,6 @@
-import { json, redirect } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 import { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI } from '$env/static/private';
+// Declare a CLIENT_ID, CLIENT_SECRET, and REDIRECT_URI in a .env file. CLIENT_ID and CLIENT_SECRET comes from Spotify.
 
 export async function GET({ url, cookies }: { url: URL; cookies: any }) {
 	const code = url.searchParams.get('code');
