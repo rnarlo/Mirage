@@ -1,0 +1,66 @@
+:root {
+	--night: #131515;
+	--jet: #2b2c28;
+	--persian-green: #339989;
+	--snow: #fffafb;
+	--snow-style: #e6e5e5;
+	--spotify-green: #1ed760;
+	--wrap-yellow: #fbf304;
+}
+
+.lexend-deca-body {
+	font-family: 'Lexend Deca', sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.lexend-deca-header {
+	font-family: 'Lexend Deca', sans-serif;
+	font-optical-sizing: auto;
+	font-weight: bold;
+	font-style: normal;
+	color: var(--spotify-green);
+	font-size: 3em;
+}
+
+.fira-sans-bold {
+	font-family: 'Fira Sans', sans-serif;
+	font-weight: 700;
+	font-style: normal;
+	color: var(--night);
+}
+
+a {
+	color: var(--snow);
+	text-decoration: none;
+}
+
+body {
+	background: var(--night);
+	color: var(--snow);
+	scroll-behavior: smooth;
+	margin: 0;
+	padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+		env(safe-area-inset-left);
+	overflow-x: hidden;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.underline::after {
+	content: '';
+	display: block;
+	height: 2px;
+	background-color: var(--spotify-green);
+	position: relative;
+	transition: all ease-in-out 600ms;
+	width: 0;
+}
+
+@media (hover: hover) {
+	.underline:hover::after {
+		width: 100%;
+	}
+}
