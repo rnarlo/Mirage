@@ -11,11 +11,9 @@
 
 <section>
 	{#if data.access_token}
-		<div class="lexend-deca-body main">
-			<h2 class="lexend-deca-header">Your Top Tracks</h2>
+		<div class="lexend-deca-body">
 			<TracksContainer topList={data.topList} />
 		</div>
-		<Logout />
 	{:else}
 		<h1 class="lexend-deca-header">Mirage for Spotify</h1>
 
@@ -30,22 +28,11 @@
 		text-align: center;
 	}
 
-	h2 {
-		text-align: center;
-	}
-
 	section {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
 		gap: 1em;
-	}
-
-	.main {
-		display: flex;
-		flex-direction: column;
-		flex-wrap: wrap;
-		align-items: center;
 	}
 </style>

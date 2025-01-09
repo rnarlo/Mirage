@@ -4,9 +4,11 @@
 	import SpotifyIcon from '$lib/images/icon-black.png';
 	import SpotifyIconWhite from '$lib/images/icon-white.png';
 
+	import Logout from './Logout.svelte';
+
 	import YellowBg from '$lib/images/backgrounds/yellow-bg.png';
 	import RedBg from '$lib/images/backgrounds/red-bg.png';
-	import UpLosBanos from '$lib/images/backgrounds/uplb.png';
+	import UpLosBanos from '$lib/images/backgrounds/uplb.jpg';
 	import UpDiliman from '$lib/images/backgrounds/upd.png';
 	import BratSummer from '$lib/images/backgrounds/brat-summer.png';
 	export let topList: { short_term: any[]; medium_term: any[]; long_term: any[] } | null;
@@ -42,18 +44,21 @@
 	}
 
 	async function downloadImage() {
-		const imageContainer = document.getElementById('tracks-container');
+		const imageContainer = document.getElementById('inner-tracks-container');
 		if (!imageContainer) {
 			alert('Could not find the image container!');
 			return;
 		}
 
 		try {
-			const canvas = await html2canvas(imageContainer, { scale: 5, useCORS: true });
+			const canvas = await html2canvas(imageContainer, { scale: 4, useCORS: true });
 			const dataURL = canvas.toDataURL('image/png', 1.0);
 
 			if (navigator.onLine) {
-				saveAs(dataURL, `mirage-${generateRandomCode(5)}.png`);
+				saveAs(
+					dataURL,
+					`mirage-${document.querySelector('input[name="background"]:checked').value}-${generateRandomCode(5)}.png`
+				);
 			} else {
 				alert('You are offline!');
 			}
@@ -76,149 +81,191 @@
 	});
 </script>
 
-<div>
-	<div class="tracks-container" id="tracks-container" data-selected-style={selectedStyle}>
-		<img
-			src={styleBackground[selectedStyle]}
-			alt="This is the background you have selected"
-			class="background"
-			class:background-loaded={backgroundLoaded}
-			on:load={() => (backgroundLoaded = true)}
-		/>
-		<div class="background-loading {backgroundLoaded ? 'hidden' : ''}"></div>
-		<div class="information-container {backgroundLoaded ? 'shown' : 'hidden'}">
-			<div class="title-container">
-				<h1>My Top Songs</h1>
-				<h1 style="opacity: 1; font-weight: normal; font-size: 0.6em;">
-					{termLabels[selectedTerm]}
-				</h1>
-			</div>
-			{#if topList}
-				<ol>
-					{#each topList[selectedTerm].slice(0, 5) as track (track.id)}
-						<li>
-							<img src={track.album.images[0]?.url} alt={track.album.name} class="album-cover" />
-							<a href="https://open.spotify.com/track/{track.id}">
-								<div class="track-info">
-									<p class="track-name">{track.name}</p>
-									<p class="track-artists">
-										{track.artists.map((artist: string) => artist.name).join(', ')}
-									</p>
-								</div>
-							</a>
-						</li>
-					{/each}
-				</ol>
-			{:else}
-				<p style="color: var(--night);">Loading~</p>
-			{/if}
-			<div class="branding">
-				<a href="https://www.spotify.com" target="_blank" rel="noopener noreferrer"
-					><img
-						src={selectedStyle == 'yellow2024' ||
-						selectedStyle == 'red2023' ||
-						selectedStyle == 'bratsummer'
-							? SpotifyIcon
-							: SpotifyIconWhite}
-						alt="The Spotify icon"
-						crossorigin="anonymous"
-					/>
-				</a>
-				<h1>M4S.VERCEL.APP</h1>
+<section>
+	<div class="inner-container">
+		<h2 class="lexend-deca-header">Your Top Tracks</h2>
+		<div class="tracks-container" id="tracks-container" data-selected-style={selectedStyle}>
+			<div class="inner-tracks-container" id="inner-tracks-container">
+				<img
+					src={styleBackground[selectedStyle]}
+					alt="This is the background you have selected"
+					class="background"
+					class:background-loaded={backgroundLoaded}
+					on:load={() => (backgroundLoaded = true)}
+				/>
+				<div class="background-loading {backgroundLoaded ? 'hidden' : ''}"></div>
+				<div class="information-container {backgroundLoaded ? 'shown' : 'hidden'}">
+					<div class="title-container">
+						<h1>My Top Songs</h1>
+						<h1 style="opacity: 1; font-weight: normal; font-size: 0.6em;">
+							{termLabels[selectedTerm]}
+						</h1>
+					</div>
+					{#if topList}
+						<ol>
+							{#each topList[selectedTerm].slice(0, 5) as track (track.id)}
+								<li>
+									<img
+										src={track.album.images[0]?.url}
+										alt={track.album.name}
+										class="album-cover"
+									/>
+									<a href="https://open.spotify.com/track/{track.id}">
+										<div class="track-info">
+											<p class="track-name">{track.name}</p>
+											<p class="track-artists">
+												{track.artists.map((artist: string) => artist.name).join(', ')}
+											</p>
+										</div>
+									</a>
+								</li>
+							{/each}
+						</ol>
+					{:else}
+						<p style="color: var(--night);">Loading~</p>
+					{/if}
+					<div class="branding">
+						<a href="https://www.spotify.com" target="_blank" rel="noopener noreferrer"
+							><img
+								src={selectedStyle == 'yellow2024' ||
+								selectedStyle == 'red2023' ||
+								selectedStyle == 'bratsummer'
+									? SpotifyIcon
+									: SpotifyIconWhite}
+								alt="The Spotify icon"
+								crossorigin="anonymous"
+							/>
+						</a>
+						<h1>M4S.VERCEL.APP</h1>
+					</div>
+				</div>
 			</div>
 		</div>
+		<button on:click={downloadImage} class="lexend-deca-body"> Download Image </button>
 	</div>
-</div>
-<div class="controls">
-	<button on:click={downloadImage} class="lexend-deca-body"> Download Image </button>
-	<h2>Time Range</h2>
-	<div class="radio-selector">
-		<label class="radio-input">
-			<input type="radio" bind:group={selectedTerm} value="short_term" />
-			<span class="radio-label">Last Month</span>
-		</label>
+	<div class="controls">
+		<h2>Time Range</h2>
+		<div class="radio-selector">
+			<label class="radio-input">
+				<input type="radio" bind:group={selectedTerm} value="short_term" />
+				<span class="radio-label">Last Month</span>
+			</label>
 
-		<label class="radio-input">
-			<input type="radio" bind:group={selectedTerm} value="medium_term" />
-			<span class="radio-label">Last Six Months</span>
-		</label>
+			<label class="radio-input">
+				<input type="radio" bind:group={selectedTerm} value="medium_term" />
+				<span class="radio-label">Last Six Months</span>
+			</label>
 
-		<label class="radio-input">
-			<input type="radio" bind:group={selectedTerm} value="long_term" />
-			<span class="radio-label">Last Year</span>
-		</label>
+			<label class="radio-input">
+				<input type="radio" bind:group={selectedTerm} value="long_term" />
+				<span class="radio-label">Last Year</span>
+			</label>
+		</div>
+		<h2>Style</h2>
+		<div class="radio-selector">
+			<label class="radio-input"
+				><input
+					type="radio"
+					bind:group={selectedStyle}
+					name="background"
+					value="yellow2024"
+					on:change={() => changeStyle('yellow2024')}
+				/>
+				<span class="radio-label">2024 Yellow</span></label
+			>
+
+			<label class="radio-input"
+				><input
+					type="radio"
+					bind:group={selectedStyle}
+					name="background"
+					value="red2023"
+					on:change={() => changeStyle('red2023')}
+				/>
+				<span class="radio-label">2023 Red</span></label
+			>
+
+			<label class="radio-input"
+				><input
+					type="radio"
+					bind:group={selectedStyle}
+					name="background"
+					value="bratsummer"
+					on:change={() => changeStyle('bratsummer')}
+				/>
+				<span class="radio-label">brat summer</span></label
+			>
+
+			<label class="radio-input"
+				><input
+					type="radio"
+					bind:group={selectedStyle}
+					name="background"
+					value="upd"
+					on:change={() => changeStyle('upd')}
+				/>
+				<span class="radio-label">UP Diliman</span></label
+			>
+
+			<label class="radio-input"
+				><input
+					type="radio"
+					bind:group={selectedStyle}
+					name="background"
+					value="uplb"
+					on:change={() => changeStyle('uplb')}
+				/>
+				<span class="radio-label">UP Los Baños</span></label
+			>
+		</div>
+		<Logout />
 	</div>
-	<h2>Style</h2>
-	<div class="radio-selector">
-		<label class="radio-input"
-			><input
-				type="radio"
-				bind:group={selectedStyle}
-				name="background"
-				value="yellow2024"
-				on:change={() => changeStyle('yellow2024')}
-			/>
-			<span class="radio-label">2024 Yellow</span></label
-		>
-
-		<label class="radio-input"
-			><input
-				type="radio"
-				bind:group={selectedStyle}
-				name="background"
-				value="red2023"
-				on:change={() => changeStyle('red2023')}
-			/>
-			<span class="radio-label">2023 Red</span></label
-		>
-
-		<label class="radio-input"
-			><input
-				type="radio"
-				bind:group={selectedStyle}
-				name="background"
-				value="bratsummer"
-				on:change={() => changeStyle('bratsummer')}
-			/>
-			<span class="radio-label">brat summer</span></label
-		>
-
-		<label class="radio-input"
-			><input
-				type="radio"
-				bind:group={selectedStyle}
-				name="background"
-				value="upd"
-				on:change={() => changeStyle('upd')}
-			/>
-			<span class="radio-label">UP Diliman</span></label
-		>
-
-		<label class="radio-input"
-			><input
-				type="radio"
-				bind:group={selectedStyle}
-				name="background"
-				value="uplb"
-				on:change={() => changeStyle('uplb')}
-			/>
-			<span class="radio-label">UP Los Baños</span></label
-		>
-	</div>
-</div>
+</section>
 
 <style>
+	section {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		column-gap: 2em;
+		row-gap: 3em;
+	}
+
+	.inner-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 3em;
+	}
+
+	.inner-container h2 {
+		margin: 0;
+	}
+
 	.tracks-container {
+		position: static;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		flex: 1;
+	}
+
+	.inner-tracks-container {
 		position: relative;
 		display: flex;
 		justify-content: flex-end;
 		flex-direction: column;
-		width: 300px;
-		aspect-ratio: 1080 / 1918;
+		width: 325px;
+		height: 580px;
 		color: var(--night);
-		padding: 0.5em 1em;
 		gap: 1em;
 		margin: 0;
+	}
+
+	.information-container {
+		padding: 0.2em 1.3em;
 	}
 
 	.background {
@@ -250,9 +297,9 @@
 		display: flex;
 		flex-direction: row;
 		width: 100%;
+		padding: 0 0 3px 0;
 		justify-content: space-between;
 		align-items: center;
-		/* background-color: red; */
 	}
 
 	.branding * {
@@ -268,7 +315,7 @@
 	.branding img {
 		/* width: 100px; */
 		padding: 0;
-		width: 30px;
+		width: 33px;
 		scale: 1;
 	}
 
@@ -300,6 +347,7 @@
 		font-family: 'Lexend Deca', sans-serif;
 		font-optical-sizing: auto;
 		font-weight: bold;
+		text-align: center;
 	}
 
 	ol {
@@ -331,13 +379,18 @@
 	}
 
 	ol li::before {
-		font-family: 'Fira Sans', 'Lexend Deca', sans-serif;
+		font-family: 'Radio Canada Big', 'Lexend Deca', sans-serif;
 		font-weight: 700;
 		width: 0.5em;
-		font-size: 2em;
+		font-size: 1.8em;
 		content: counter(list-counter);
-		padding-right: 0.3em;
+		padding-right: 0.2em;
 		color: var(--night);
+	}
+
+	/* The number 4 in this font looks more similar to Wrapped */
+	ol li:nth-child(4)::before {
+		font-family: 'Fira Sans', sans-serif !important;
 	}
 
 	.album-cover {
@@ -378,7 +431,8 @@
 		justify-content: center;
 		align-items: center;
 		gap: 2em;
-		padding: 2em;
+		width: 400px;
+		max-width: 90vw;
 	}
 
 	button {

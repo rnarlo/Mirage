@@ -1,5 +1,5 @@
 <div class="lexend-deca-body">
-	<h4>v1.1.3</h4>
+	<h4>v1.1.5</h4>
 	<a href="/api/login" class="lexend-deca-body">Log In with Spotify</a>
 </div>
 

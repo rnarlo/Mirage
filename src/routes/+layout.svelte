@@ -12,7 +12,7 @@
 	</main>
 
 	<footer>
-		<p class="lexend-deca-body">© 2024 Mirage for Spotify. All rights reserved.</p>
+		<p class="lexend-deca-body">© 2024–2025 Mirage for Spotify. All rights reserved.</p>
 	</footer>
 </div>
 
@@ -31,7 +31,7 @@
 		align-items: center;
 		flex-direction: column;
 		min-height: 90vh;
-		width: 1000px;
+		width: 1100px;
 		max-width: 90vw;
 		margin: 0;
 		padding-top: 6em;

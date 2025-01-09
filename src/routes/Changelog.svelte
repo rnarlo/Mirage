@@ -1,5 +1,16 @@
-<p class="lexend-deca-header">Changelog</p>
+<h2>Changelog</h2>
 <div class="lexend-deca-body changelog">
+	<p class="date">1.1.5 (01/09/25)</p>
+	<ul>
+		<li>Fixed height and width.</li>
+		<li>Changed fonts.</li>
+	</ul>
+	<p class="date">1.1.4 (01/07/25)</p>
+	<ul>
+		<li>Fixed extra padding in image.</li>
+		<li>Heavily improved website layout (image and controls are now side-by-side on desktop).</li>
+		<li>Adjusted UPLB background.</li>
+	</ul>
 	<p class="date">1.1.3 (12/31/24)</p>
 	<ul>
 		<li>Happy new year!</li>
@@ -48,6 +59,15 @@
 		flex-direction: column;
 		justify-content: flex-start;
 		align-items: center;
+	}
+
+	h2 {
+		color: var(--spotify-green);
+		font-size: 1em;
+		font-family: 'Lexend Deca', sans-serif;
+		font-optical-sizing: auto;
+		font-weight: bold;
+		text-align: center;
 	}
 
 	.date {

@@ -66,7 +66,7 @@
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
-		max-width: 800px;
+		max-width: 1100px;
 		width: 90vw;
 		padding: 1.3em 0;
 	}
