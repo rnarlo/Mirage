@@ -51,13 +51,13 @@
 		}
 
 		try {
-			const canvas = await html2canvas(imageContainer, { scale: 4, useCORS: true });
-			const dataURL = canvas.toDataURL('image/png', 1.0);
+			const canvas = await html2canvas(imageContainer, { scale: 5, useCORS: true });
+			const dataURL = canvas.toDataURL('image/jpeg', 5.0);
 
 			if (navigator.onLine) {
 				saveAs(
 					dataURL,
-					`mirage-${document.querySelector('input[name="background"]:checked').value}-${generateRandomCode(5)}.png`
+					`mirage-${document.querySelector('input[name="background"]:checked').value}-${generateRandomCode(5)}.jpg`
 				);
 			} else {
 				alert('You are offline!');
