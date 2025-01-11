@@ -1,6 +1,11 @@
 @font-face {
 	font-family: Circular;
-	src: url('CircularStd-Bold.otf');
+	src: url('CircularStd-Medium.otf');
+}
+
+@font-face {
+	font-family: Circular-Light;
+	src: url('CircularStd-Light.otf');
 }
 
 :root {
@@ -14,7 +19,7 @@
 }
 
 .lexend-deca-body {
-	font-family: 'Lexend Deca', sans-serif;
+	font-family: 'Circular', 'Lexend Deca', sans-serif;
 	font-optical-sizing: auto;
 	font-weight: 400;
 	font-style: normal;

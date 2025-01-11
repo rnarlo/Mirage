@@ -258,7 +258,8 @@
 		justify-content: flex-end;
 		flex-direction: column;
 		width: 325px;
-		height: 580px;
+		aspect-ratio: 1080/1920;
+		/* height: 580px; */
 		color: var(--night);
 		gap: 1em;
 		margin: 0;
@@ -344,7 +345,7 @@
 	h2 {
 		color: var(--spotify-green);
 		font-size: 1em;
-		font-family: 'Lexend Deca', sans-serif;
+		font-family: 'Circular', 'Lexend Deca', sans-serif;
 		font-optical-sizing: auto;
 		font-weight: bold;
 		text-align: center;
@@ -414,15 +415,16 @@
 	.track-info p {
 		margin: 0;
 		width: 100%;
-		font-size: 0.6em;
+		font-size: 0.62em;
 	}
 
 	.track-name {
+		font-family: 'Circular';
 		font-weight: bold;
 	}
 
 	.track-artists {
-		font-weight: lighter;
+		font-family: 'Circular-Light';
 	}
 
 	.controls {
