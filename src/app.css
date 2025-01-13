@@ -1,11 +1,11 @@
 @font-face {
 	font-family: Circular;
-	src: url('CircularStd-Medium.otf');
+	src: url('Circular-Std-Black.ttf');
 }
 
 @font-face {
-	font-family: Circular-Light;
-	src: url('CircularStd-Light.otf');
+	font-family: CircularLight;
+	src: url('CircularStd-Book.otf');
 }
 
 :root {
@@ -14,12 +14,26 @@
 	--persian-green: #339989;
 	--snow: #fffafb;
 	--snow-style: #e6e5e5;
-	--spotify-green: #1ed760;
+	--spotify-green: #339989;
 	--wrap-yellow: #fbf304;
 }
 
+.circular-medium {
+	font-family: 'Circular', sans-serif;
+	font-optical-sizing: auto;
+	font-weight: normal;
+	font-style: normal;
+}
+
+.circular-light {
+	font-family: 'CircularLight', sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 200;
+	font-style: normal;
+}
+
 .lexend-deca-body {
-	font-family: 'Circular', 'Lexend Deca', sans-serif;
+	font-family: 'Lexend Deca', sans-serif;
 	font-optical-sizing: auto;
 	font-weight: 400;
 	font-style: normal;

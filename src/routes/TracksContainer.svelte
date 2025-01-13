@@ -96,8 +96,8 @@
 				<div class="background-loading {backgroundLoaded ? 'hidden' : ''}"></div>
 				<div class="information-container {backgroundLoaded ? 'shown' : 'hidden'}">
 					<div class="title-container">
-						<h1>My Top Songs</h1>
-						<h1 style="opacity: 1; font-weight: normal; font-size: 0.6em;">
+						<h1 class="circular-medium">My Top Songs</h1>
+						<h1 style="opacity: 1; font-weight: normal; font-size: 0.6em;" class="circular-light">
 							{termLabels[selectedTerm]}
 						</h1>
 					</div>
@@ -105,19 +105,22 @@
 						<ol>
 							{#each topList[selectedTerm].slice(0, 5) as track (track.id)}
 								<li>
-									<img
-										src={track.album.images[0]?.url}
-										alt={track.album.name}
-										class="album-cover"
-									/>
-									<a href="https://open.spotify.com/track/{track.id}">
-										<div class="track-info">
-											<p class="track-name">{track.name}</p>
-											<p class="track-artists">
-												{track.artists.map((artist: string) => artist.name).join(', ')}
-											</p>
-										</div>
-									</a>
+									<div class="track">
+										<img
+											src={track.album.images[0]?.url}
+											alt={track.album.name}
+											class="album-cover"
+										/>
+
+										<a href="https://open.spotify.com/track/{track.id}" class="track-info">
+											<div class="inner-track-info">
+												<p class="track-name circular-medium">{track.name}</p>
+												<p class="track-artists circular-light">
+													{track.artists.map((artist: string) => artist.name).join(', ')}
+												</p>
+											</div>
+										</a>
+									</div>
 								</li>
 							{/each}
 						</ol>
@@ -136,7 +139,7 @@
 								crossorigin="anonymous"
 							/>
 						</a>
-						<h1>M4S.VERCEL.APP</h1>
+						<h1 class="circular-medium">M4S.VERCEL.APP</h1>
 					</div>
 				</div>
 			</div>
@@ -250,6 +253,8 @@
 		justify-content: center;
 		align-items: center;
 		flex: 1;
+		width: 325px;
+		aspect-ratio: 1080/1920;
 	}
 
 	.inner-tracks-container {
@@ -257,11 +262,9 @@
 		display: flex;
 		justify-content: flex-end;
 		flex-direction: column;
-		width: 325px;
-		aspect-ratio: 1080/1920;
-		/* height: 580px; */
+		width: 100%;
+		height: 100%;
 		color: var(--night);
-		gap: 1em;
 		margin: 0;
 	}
 
@@ -270,18 +273,18 @@
 	}
 
 	.background {
-		height: 100%;
-		width: 100%;
 		top: 0;
 		left: 0;
 		right: 0;
 		bottom: 0;
 		position: absolute;
 		z-index: -1;
-		/* border: 1px solid var(--night); */
 		display: none;
 		opacity: 0;
 		transition: opacity 0.5s ease;
+		width: 325px;
+		aspect-ratio: 1080/1921;
+		overflow: hidden;
 	}
 
 	.branding,
@@ -308,7 +311,7 @@
 	}
 
 	.branding a {
-		margin-top: 0.2em;
+		margin-top: 0em;
 		/* padding: 0 1em; */
 		/* background-color: red; */
 	}
@@ -339,13 +342,13 @@
 		color: var(--night);
 		font-size: 0.86em;
 		margin: 0.5em;
-		font-weight: 600;
+		font-weight: 400;
 	}
 
 	h2 {
 		color: var(--spotify-green);
 		font-size: 1em;
-		font-family: 'Circular', 'Lexend Deca', sans-serif;
+		font-family: 'Lexend Deca', sans-serif;
 		font-optical-sizing: auto;
 		font-weight: bold;
 		text-align: center;
@@ -359,7 +362,7 @@
 		list-style-type: none;
 		counter-reset: list-counter;
 		padding: 0;
-		margin: 1.5em 0.2em;
+		margin: 1.5em 0em 1.25em 0em;
 		row-gap: 0.5em;
 	}
 
@@ -370,8 +373,9 @@
 		counter-increment: list-counter;
 		font-weight: bolder;
 		color: var(--night);
-		height: 3.8em;
-		gap: 0.5em;
+		height: 3.9rem;
+		gap: 0.8em;
+		width: 100%;
 	}
 
 	ol li * {
@@ -382,11 +386,12 @@
 	ol li::before {
 		font-family: 'Radio Canada Big', 'Lexend Deca', sans-serif;
 		font-weight: 700;
-		width: 0.5em;
-		font-size: 1.8em;
+		width: 1rem;
+		font-size: 1.9em;
 		content: counter(list-counter);
-		padding-right: 0.2em;
+		/* margin-right: 0.2em; */
 		color: var(--night);
+		text-align: center;
 	}
 
 	/* The number 4 in this font looks more similar to Wrapped */
@@ -394,9 +399,18 @@
 		font-family: 'Fira Sans', sans-serif !important;
 	}
 
-	.album-cover {
+	.track {
+		width: 100%;
 		height: 100%;
-		object-fit: cover;
+		display: flex;
+		flex-direction: row;
+		gap: 0.5em;
+		/* background: red; */
+	}
+
+	.album-cover {
+		position: relative;
+		height: 100%;
 		padding: 0;
 		margin: 0;
 		border-radius: 2px;
@@ -404,27 +418,30 @@
 
 	.track-info {
 		display: flex;
+		width: 100%;
+		height: 100%;
+	}
+
+	.inner-track-info {
+		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		padding: 0;
 		gap: 0.2em;
-		height: 100%;
 		width: 100%;
 	}
 
-	.track-info p {
+	.inner-track-info p {
 		margin: 0;
 		width: 100%;
-		font-size: 0.62em;
+		font-size: 0.65rem;
 	}
 
 	.track-name {
-		font-family: 'Circular';
-		font-weight: bold;
+		/* font-weight: 900 !important; */
 	}
 
 	.track-artists {
-		font-family: 'Circular-Light';
+		font-weight: 200 !important;
 	}
 
 	.controls {
