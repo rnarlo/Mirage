@@ -97,9 +97,9 @@
 				<div class="information-container {backgroundLoaded ? 'shown' : 'hidden'}">
 					<div class="title-container">
 						<h1 class="circular-medium">My Top Songs</h1>
-						<h1 style="opacity: 1; font-weight: normal; font-size: 0.6em;" class="circular-light">
+						<p class="track-artists circular-light" style="font-size: 0.6em;">
 							{termLabels[selectedTerm]}
-						</h1>
+						</p>
 					</div>
 					{#if topList}
 						<ol>
@@ -114,8 +114,8 @@
 
 										<a href="https://open.spotify.com/track/{track.id}" class="track-info">
 											<div class="inner-track-info">
-												<p class="track-name circular-medium">{track.name}</p>
-												<p class="track-artists circular-light">
+												<p class="circular-black">{track.name}</p>
+												<p class="circular-light">
 													{track.artists.map((artist: string) => artist.name).join(', ')}
 												</p>
 											</div>
@@ -342,7 +342,7 @@
 		color: var(--night);
 		font-size: 0.86em;
 		margin: 0.5em;
-		font-weight: 400;
+		font-weight: bold !important;
 	}
 
 	h2 {
@@ -434,14 +434,6 @@
 		margin: 0;
 		width: 100%;
 		font-size: 0.65rem;
-	}
-
-	.track-name {
-		/* font-weight: 900 !important; */
-	}
-
-	.track-artists {
-		font-weight: 200 !important;
 	}
 
 	.controls {

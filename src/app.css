@@ -18,18 +18,18 @@
 	--wrap-yellow: #fbf304;
 }
 
-.circular-medium {
+.circular-black {
 	font-family: 'Circular', sans-serif;
 	font-optical-sizing: auto;
-	font-weight: normal;
+	font-weight: bold !important;
 	font-style: normal;
 }
 
 .circular-light {
-	font-family: 'CircularLight', sans-serif;
+	font-family: 'Circular', 'CircularLight', sans-serif;
 	font-optical-sizing: auto;
-	font-weight: 200;
 	font-style: normal;
+	font-weight: lighter !important;
 }
 
 .lexend-deca-body {
