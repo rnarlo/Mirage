@@ -9,6 +9,9 @@
 		This app makes use of Spotify's Web API, hence the options' being limited. Mirage unfortunately
 		cannot show you your top tracks from a more specific timeframe. :(
 	</p>
+	<p style="font-weight: bold; color: var(--persian-green);">
+		This application is in no way affiliated or in partnership with Spotify.
+	</p>
 	<p>Currently under construction!</p>
 </section>
 
@@ -26,6 +29,6 @@
 	}
 
 	a {
-		color: var(--spotify-green);
+		color: var(--persian-green);
 	}
 </style>

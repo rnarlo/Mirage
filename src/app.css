@@ -5,38 +5,36 @@
 
 @font-face {
 	font-family: CircularLight;
-	src: url('CircularStd-Book.otf');
+	src: url('CircularStd-Light.otf');
 }
 
 :root {
 	--night: #131515;
 	--jet: #2b2c28;
 	--persian-green: #339989;
-	--snow: #fffafb;
+	--snow: #f0f3f5;
 	--snow-style: #e6e5e5;
-	--spotify-green: #339989;
-	--wrap-yellow: #fbf304;
 }
 
 .circular-black {
 	font-family: 'Circular', sans-serif;
 	font-optical-sizing: auto;
-	font-weight: bold !important;
+	font-weight: normal !important;
 	font-style: normal;
 }
 
 .circular-light {
-	font-family: 'Circular', 'CircularLight', sans-serif;
+	font-family: 'CircularLight', sans-serif;
 	font-optical-sizing: auto;
+	font-weight: normal !important;
 	font-style: normal;
-	font-weight: lighter !important;
 }
 
 .lexend-deca-body {
 	font-family: 'Lexend Deca', sans-serif;
 	font-optical-sizing: auto;
-	font-weight: 400;
 	font-style: normal;
+	font-weight: normal;
 }
 
 .lexend-deca-header {
@@ -44,7 +42,7 @@
 	font-optical-sizing: auto;
 	font-weight: bold;
 	font-style: normal;
-	color: var(--spotify-green);
+	color: var(--persian-green);
 	font-size: 3em;
 }
 
@@ -77,7 +75,7 @@ body {
 	content: '';
 	display: block;
 	height: 2px;
-	background-color: var(--spotify-green);
+	background-color: var(--persian-green);
 	position: relative;
 	transition: all ease-in-out 600ms;
 	width: 0;

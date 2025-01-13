@@ -1,5 +1,10 @@
 <h2>Changelog</h2>
 <div class="lexend-deca-body changelog">
+	<p class="date">1.2.0 (01/13/25)</p>
+	<ul>
+		<li>Updated fonts (again).</li>
+		<li>Changed color and logo to comply with Spotify Developer terms.</li>
+	</ul>
 	<p class="date">1.1.5 (01/09/25)</p>
 	<ul>
 		<li>Fixed height and width.</li>
@@ -62,7 +67,7 @@
 	}
 
 	h2 {
-		color: var(--spotify-green);
+		color: var(--persian-green);
 		font-size: 1em;
 		font-family: 'Lexend Deca', sans-serif;
 		font-optical-sizing: auto;

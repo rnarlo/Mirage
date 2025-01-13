@@ -33,10 +33,10 @@
 		font-size: 1em;
 		width: 15em;
 		height: 3em;
-		background: var(--spotify-green);
+		background: var(--persian-green);
 		border-radius: 1.875rem;
 		border: none;
-		color: var(--night);
+		color: var(--snow);
 		cursor: pointer;
 	}
 </style>

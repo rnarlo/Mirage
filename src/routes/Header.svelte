@@ -125,14 +125,14 @@
 	}
 
 	li[aria-current='page'] > a {
-		color: var(--spotify-green) !important;
+		color: var(--persian-green) !important;
 	}
 
 	li[aria-current='page']::after {
 		content: '';
 		display: block;
 		height: 2px;
-		background-color: var(--spotify-green);
+		background-color: var(--persian-green);
 		position: relative;
 		width: 100%;
 	}
@@ -143,7 +143,7 @@
 	}
 
 	a:hover {
-		color: var(--spotify-green);
+		color: var(--persian-green);
 	}
 
 	.isScrolled-bg {

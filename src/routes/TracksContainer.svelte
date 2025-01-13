@@ -78,6 +78,11 @@
 		if (img && img.complete) {
 			backgroundLoaded = true;
 		}
+
+		const albumCovers = document.querySelectorAll('.album-cover');
+		albumCovers.forEach((cover) => {
+			cover.addEventListener('contextmenu', (event) => event.preventDefault());
+		});
 	});
 </script>
 
@@ -97,7 +102,7 @@
 				<div class="information-container {backgroundLoaded ? 'shown' : 'hidden'}">
 					<div class="title-container">
 						<h1 class="circular-medium">My Top Songs</h1>
-						<p class="track-artists circular-light" style="font-size: 0.6em;">
+						<p class="tircular-light" style="font-size: 0.6em;">
 							{termLabels[selectedTerm]}
 						</p>
 					</div>
@@ -340,13 +345,17 @@
 
 	h1 {
 		color: var(--night);
-		font-size: 0.86em;
+		font-size: 0.86em !important;
 		margin: 0.5em;
 		font-weight: bold !important;
 	}
 
+	p {
+		font-size: 0.65em !important;
+	}
+
 	h2 {
-		color: var(--spotify-green);
+		color: var(--persian-green);
 		font-size: 1em;
 		font-family: 'Lexend Deca', sans-serif;
 		font-optical-sizing: auto;
@@ -453,10 +462,10 @@
 		font-size: 1em;
 		width: 15em;
 		height: 3em;
-		background: var(--spotify-green);
+		background: var(--persian-green);
 		border-radius: 1.875rem;
 		border: none;
-		color: var(--night);
+		color: var(--snow);
 		cursor: pointer;
 	}
 
@@ -495,7 +504,7 @@
 	input[type='radio']:checked + .radio-label {
 		background: var(--snow);
 		color: var(--night);
-		border: 3px solid var(--spotify-green);
+		border: 3px solid var(--persian-green);
 	}
 
 	/* THIS SECTION IS FOR DYNAMIC STYLING BASED ON SELECTED STYLE */
