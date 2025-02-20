@@ -49,5 +49,6 @@
 		align-items: center;
 		flex-direction: column;
 		text-align: justify;
+		gap: 2em;
 	}
 </style>

@@ -1,5 +1,5 @@
 <div class="lexend-deca-body">
-	<h4>v1.1.5</h4>
+	<h4>v1.2.1</h4>
 	<a href="/api/login" class="lexend-deca-body">Log In with Spotify</a>
 </div>
 
@@ -23,7 +23,7 @@
 		background: var(--persian-green);
 		border-radius: 1.875rem;
 		border: none;
-		color: var(--snow);
+		color: var(--night);
 		cursor: pointer;
 	}
 

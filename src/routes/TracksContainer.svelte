@@ -101,8 +101,8 @@
 				<div class="background-loading {backgroundLoaded ? 'hidden' : ''}"></div>
 				<div class="information-container {backgroundLoaded ? 'shown' : 'hidden'}">
 					<div class="title-container">
-						<h1 class="circular-medium">My Top Songs</h1>
-						<p class="tircular-light" style="font-size: 0.6em;">
+						<h1 class="dm-sans-bold">My Top Songs</h1>
+						<p class="track-artist dm-sans-body">
 							{termLabels[selectedTerm]}
 						</p>
 					</div>
@@ -119,8 +119,8 @@
 
 										<a href="https://open.spotify.com/track/{track.id}" class="track-info">
 											<div class="inner-track-info">
-												<p class="circular-black">{track.name}</p>
-												<p class="circular-light">
+												<p class="track-name dm-sans-bold">{track.name}</p>
+												<p class="track-artist dm-sans-body">
 													{track.artists.map((artist: string) => artist.name).join(', ')}
 												</p>
 											</div>
@@ -144,7 +144,7 @@
 								crossorigin="anonymous"
 							/>
 						</a>
-						<h1 class="circular-medium">M4S.VERCEL.APP</h1>
+						<h1 class="dm-sans-bold" style="font-weight: 700 !important;">M4S.VERCEL.APP</h1>
 					</div>
 				</div>
 			</div>
@@ -236,8 +236,8 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: center;
-		column-gap: 2em;
-		row-gap: 3em;
+		column-gap: 2rem;
+		row-gap: 3rem;
 	}
 
 	.inner-container {
@@ -274,7 +274,7 @@
 	}
 
 	.information-container {
-		padding: 0.2em 1.3em;
+		padding: 0.2rem 1.3rem;
 	}
 
 	.background {
@@ -347,7 +347,16 @@
 		color: var(--night);
 		font-size: 0.86em !important;
 		margin: 0.5em;
-		font-weight: bold !important;
+		font-weight: 700 !important;
+	}
+
+	.track-name {
+		font-weight: 700 !important;
+		line-height: 120%;
+	}
+
+	.track-artist {
+		font-weight: 400 !important;
 	}
 
 	p {
@@ -380,7 +389,6 @@
 		flex-direction: row;
 		align-items: center;
 		counter-increment: list-counter;
-		font-weight: bolder;
 		color: var(--night);
 		height: 3.9rem;
 		gap: 0.8em;
@@ -413,7 +421,7 @@
 		height: 100%;
 		display: flex;
 		flex-direction: row;
-		gap: 0.5em;
+		gap: 0.5rem;
 		/* background: red; */
 	}
 
@@ -423,6 +431,12 @@
 		padding: 0;
 		margin: 0;
 		border-radius: 2px;
+		-webkit-user-select: none !important;
+		-webkit-user-drag: none;
+		-webkit-app-region: no-drag;
+		-ms-user-select: none;
+		-webkit-touch-callout: none !important;
+		user-select: none;
 	}
 
 	.track-info {
@@ -435,14 +449,14 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		gap: 0.2em;
 		width: 100%;
+		gap: 0.2rem;
 	}
 
 	.inner-track-info p {
 		margin: 0;
+		padding: 0;
 		width: 100%;
-		font-size: 0.65rem;
 	}
 
 	.controls {
@@ -460,12 +474,12 @@
 		align-items: center;
 		justify-content: center;
 		font-size: 1em;
-		width: 15em;
-		height: 3em;
+		width: 15rem;
+		height: 3rem;
 		background: var(--persian-green);
 		border-radius: 1.875rem;
 		border: none;
-		color: var(--snow);
+		color: var(--night);
 		cursor: pointer;
 	}
 

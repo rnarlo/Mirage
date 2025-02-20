@@ -36,7 +36,7 @@
 		background: var(--persian-green);
 		border-radius: 1.875rem;
 		border: none;
-		color: var(--snow);
+		color: var(--night);
 		cursor: pointer;
 	}
 </style>
