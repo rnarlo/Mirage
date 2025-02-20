@@ -101,7 +101,7 @@
 				<div class="background-loading {backgroundLoaded ? 'hidden' : ''}"></div>
 				<div class="information-container {backgroundLoaded ? 'shown' : 'hidden'}">
 					<div class="title-container">
-						<h1 class="dm-sans-bold">My Top Songs</h1>
+						<h1 class="circular-black">My Top Songs</h1>
 						<p class="track-artist dm-sans-body">
 							{termLabels[selectedTerm]}
 						</p>
@@ -119,7 +119,7 @@
 
 										<a href="https://open.spotify.com/track/{track.id}" class="track-info">
 											<div class="inner-track-info">
-												<p class="track-name dm-sans-bold">{track.name}</p>
+												<p class="track-name circular-black">{track.name}</p>
 												<p class="track-artist dm-sans-body">
 													{track.artists.map((artist: string) => artist.name).join(', ')}
 												</p>
@@ -144,7 +144,7 @@
 								crossorigin="anonymous"
 							/>
 						</a>
-						<h1 class="dm-sans-bold" style="font-weight: 700 !important;">M4S.VERCEL.APP</h1>
+						<h1 class="circular-black">M4S.VERCEL.APP</h1>
 					</div>
 				</div>
 			</div>
@@ -347,11 +347,11 @@
 		color: var(--night);
 		font-size: 0.86em !important;
 		margin: 0.5em;
-		font-weight: 700 !important;
+		font-weight: 500 !important;
 	}
 
 	.track-name {
-		font-weight: 700 !important;
+		font-weight: 500 !important;
 		line-height: 120%;
 	}
 
