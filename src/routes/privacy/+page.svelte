@@ -28,7 +28,7 @@
 		or sign out, your personal data accessed from Spotify's Web API is not retained by Mirage.
 		<br />
 	</p>
-	<p class="lexend-deca-body">
+	<p class="lexend-deca-body" style="width: 100%;">
 		<strong>3. No Third-Party Access:</strong>
 		<br /><br />
 		Since your personal information is not stored, there is no opportunity or mechanism for any third
