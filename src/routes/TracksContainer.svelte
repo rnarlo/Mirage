@@ -418,7 +418,7 @@
 	ol li::before {
 		font-family: 'Radio Canada Big', 'Lexend Deca', sans-serif;
 		font-weight: 700;
-		width: 1.25rem;
+		width: 1.5rem;
 		font-size: 1.9em;
 		content: counter(list-counter);
 		/* margin-right: 0.2em; */
