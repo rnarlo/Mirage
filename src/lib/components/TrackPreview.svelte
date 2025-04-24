@@ -10,7 +10,11 @@
 	import html2canvas from 'html2canvas';
 	import { onMount } from 'svelte';
 
-	export let topList: { short_term: SpotifyTrack[]; medium_term: SpotifyTrack[]; long_term: SpotifyTrack[] } | null;
+	export let topList: {
+		short_term: SpotifyTrack[];
+		medium_term: SpotifyTrack[];
+		long_term: SpotifyTrack[];
+	} | null;
 	export let selectedTerm: 'short_term' | 'medium_term' | 'long_term';
 	export let selectedStyle: 'yellow2024' | 'red2023' | 'bratsummer' | 'upd' | 'uplb';
 
@@ -62,12 +66,11 @@
 			const dataURL = canvas.toDataURL('image/jpeg', 5.0);
 
 			if (navigator.onLine) {
-				const selectedRadio = document.querySelector('input[name="background"]:checked') as HTMLInputElement;
+				const selectedRadio = document.querySelector(
+					'input[name="background"]:checked'
+				) as HTMLInputElement;
 				if (selectedRadio) {
-					saveAs(
-						dataURL,
-						`mirage-${selectedRadio.value}-${generateRandomCode(5)}.jpg`
-					);
+					saveAs(dataURL, `mirage-${selectedRadio.value}-${generateRandomCode(5)}.jpg`);
 				} else {
 					saveAs(dataURL, `mirage-${selectedStyle}-${generateRandomCode(5)}.jpg`);
 				}
@@ -115,11 +118,7 @@
 					{#each topList[selectedTerm].slice(0, 5) as track (track.id)}
 						<li>
 							<div class="track">
-								<img
-									src={track.album.images[0]?.url}
-									alt={track.album.name}
-									class="album-cover"
-								/>
+								<img src={track.album.images[0]?.url} alt={track.album.name} class="album-cover" />
 
 								<a href="https://open.spotify.com/track/{track.id}" class="track-info">
 									<div class="inner-track-info">
@@ -140,10 +139,10 @@
 				<a href="https://www.spotify.com" target="_blank" rel="noopener noreferrer"
 					><img
 						src={selectedStyle == 'yellow2024' ||
-					selectedStyle == 'red2023' ||
-					selectedStyle == 'bratsummer'
-						? SpotifyIcon
-						: SpotifyIconWhite}
+						selectedStyle == 'red2023' ||
+						selectedStyle == 'bratsummer'
+							? SpotifyIcon
+							: SpotifyIconWhite}
 						alt="The Spotify icon"
 						crossorigin="anonymous"
 					/>
@@ -293,7 +292,7 @@
 	ol li::before {
 		font-family: 'Radio Canada Big', 'Lexend Deca', sans-serif;
 		font-weight: 700;
-		width: 1.25rem;
+		min-width: 1.5rem;
 		font-size: 1.9em;
 		content: counter(list-counter);
 		color: var(--night);
