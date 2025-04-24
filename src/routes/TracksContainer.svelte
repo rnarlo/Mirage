@@ -1,20 +1,31 @@
 <script lang="ts">
-	import SpotifyLogo from '$lib/images/full-logo-black.png';
-	import SpotifyLogoWhite from '$lib/images/full-logo-white.png';
 	import SpotifyIcon from '$lib/images/icon-black.png';
 	import SpotifyIconWhite from '$lib/images/icon-white.png';
-
 	import Logout from './Logout.svelte';
-
 	import YellowBg from '$lib/images/backgrounds/yellow-bg.png';
 	import RedBg from '$lib/images/backgrounds/red-bg.png';
 	import UpLosBanos from '$lib/images/backgrounds/uplb.jpg';
 	import UpDiliman from '$lib/images/backgrounds/upd.png';
 	import BratSummer from '$lib/images/backgrounds/brat-summer.png';
-	export let topList: { short_term: any[]; medium_term: any[]; long_term: any[] } | null;
 	import saveAs from 'file-saver';
 	import html2canvas from 'html2canvas';
 	import { onMount } from 'svelte';
+
+	export let topList: {
+		short_term: SpotifyTrack[];
+		medium_term: SpotifyTrack[];
+		long_term: SpotifyTrack[];
+	} | null;
+
+	interface SpotifyTrack {
+		id: string;
+		name: string;
+		album: {
+			name: string;
+			images: Array<{ url: string }>;
+		};
+		artists: Array<{ name: string }>;
+	}
 
 	let backgroundLoaded: boolean = false;
 	let selectedTerm: 'short_term' | 'medium_term' | 'long_term' = 'short_term';
@@ -55,10 +66,14 @@
 			const dataURL = canvas.toDataURL('image/jpeg', 5.0);
 
 			if (navigator.onLine) {
-				saveAs(
-					dataURL,
-					`mirage-${document.querySelector('input[name="background"]:checked').value}-${generateRandomCode(5)}.jpg`
-				);
+				const selectedRadio = document.querySelector(
+					'input[name="background"]:checked'
+				) as HTMLInputElement;
+				if (selectedRadio) {
+					saveAs(dataURL, `mirage-${selectedRadio.value}-${generateRandomCode(5)}.jpg`);
+				} else {
+					saveAs(dataURL, `mirage-${selectedStyle}-${generateRandomCode(5)}.jpg`);
+				}
 			} else {
 				alert('You are offline!');
 			}
@@ -121,7 +136,7 @@
 											<div class="inner-track-info">
 												<p class="track-name circular-black">{track.name}</p>
 												<p class="track-artist dm-sans-body">
-													{track.artists.map((artist: string) => artist.name).join(', ')}
+													{track.artists.map((artist) => artist.name).join(', ')}
 												</p>
 											</div>
 										</a>
@@ -403,7 +418,7 @@
 	ol li::before {
 		font-family: 'Radio Canada Big', 'Lexend Deca', sans-serif;
 		font-weight: 700;
-		width: 1rem;
+		width: 1.25rem;
 		font-size: 1.9em;
 		content: counter(list-counter);
 		/* margin-right: 0.2em; */
@@ -540,7 +555,6 @@
 	}
 
 	.tracks-container h1,
-	.tracks-container h1 + h1,
 	.tracks-container p,
 	.tracks-container .track-info p {
 		color: var(--text-color);
