@@ -66,6 +66,7 @@
 	}
 
 	.inner-container h2 {
+		text-align: center;
 		margin: 0;
 	}
 
